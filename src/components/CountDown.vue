@@ -9,7 +9,6 @@ const props = defineProps<{
     startTime: Date,
     id:string
 }>()
-console.log(props.startTime)
 
 const x = setInterval(function () {
     // Get today's date and time
@@ -25,13 +24,13 @@ const x = setInterval(function () {
 
     if (document.getElementById(props.id) !== null){
         // Display the result in the element with id="demo"
-        document.getElementById(props.id).innerHTML = hours + "h "
-            + minutes + "m " + seconds + "s ";
+        document.getElementById(props.id).innerHTML = (hours > 0 ? hours + "h " : '')
+            + (minutes > 0 ? minutes + "m ": '') + seconds + "s ";
 
         // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(x);
-            document.getElementById(props.id).innerHTML = "EXPIRED";
+            document.getElementById(props.id).innerHTML = "Nu spelend";
         }
     }
 

@@ -1,5 +1,7 @@
+import {ref} from "vue";
+
 export interface NatLab {
-    events: Event[];
+    events: NatLabEvent[];
 }
 
 export interface NatLabEvent {
@@ -149,4 +151,23 @@ export interface Theme {
     code:        null;
     boxOfficeId: null;
     name:        string;
+}
+
+export function request():Promise<Error | NatLab>{
+    var formdata = new FormData();
+    formdata.append("past", "true");
+    const today = new Date()
+    formdata.append("startDate", today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear());
+
+    return fetch("https://www.natlab.nl/nl/feed/events", {
+        method: 'POST',
+        headers: new Headers({
+            "apiKey" : "02a2eb195cb8b6f4df3b05c466440fb22f3c54922890"
+        }),
+        body: formdata,
+        mode: 'cors',
+    })
+        .then(response => response.json())
+        .then(result => {return result as NatLab})
+        .catch(error => {return error as Error});
 }
