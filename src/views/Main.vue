@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import {Hall, NatLab, request} from "../Api";
+import MoviePoster from "../components/MoviePoster.vue";
 let response = ref<NatLab>({events:[]} as NatLab)
 request().then(r => {
   response.value = r as NatLab
@@ -10,16 +11,16 @@ request().then(r => {
 <template>
 <img class="map" src="../assets/F1.png">
   <div class="square" id="Room4">
-    <img :src="response.events.filter(e => e.hall === Hall.Zaal4)[0].production.images.HDPortrait.filename">
+    <MoviePoster :events="response.events.filter(e => e.hall === Hall.Zaal4)"></MoviePoster>
   </div>
   <div class="square" id="Room3">
-    <img :src="response.events.filter(e => e.hall === Hall.Zaal3)[0].production.images.HDPortrait.filename">
+    <MoviePoster :events="response.events.filter(e => e.hall === Hall.Zaal3)"></MoviePoster>
   </div>
   <div class="square" id="Room2">
-    <img :src="response.events.filter(e => e.hall === Hall.Zaal2)[0].production.images.HDPortrait.filename">
+    <MoviePoster :events="response.events.filter(e => e.hall === Hall.Zaal2)"></MoviePoster>
   </div>
   <div class="square" id="Room1">
-    <img :src="response.events.filter(e => e.hall === Hall.Zaal1)[0].production.images.HDPortrait.filename">
+    <MoviePoster :events="response.events.filter(e => e.hall === Hall.Zaal1)"></MoviePoster>
   </div>
 </template>
 
@@ -31,10 +32,6 @@ request().then(r => {
 }
 .square{
   position: absolute;
-  background-color: white;
-  padding: 5px;
-  border-radius: 2px;
-  height: 200px;
 }
 .square img{
   max-width: 100%;
@@ -42,19 +39,19 @@ request().then(r => {
   border-radius: 1px;
 }
 #Room4{
-  top: 375px;
+  top: 325px;
   left: 425px;
 }
 #Room3{
-  top: 275px;
+  top: 250px;
   left: 675px;
 }
 #Room2{
-  top: 125px;
+  top: 75px;
   left: 1050px;
 }
 #Room1{
-  top: 40px;
+  top: 10px;
   left: 1300px;
 }
 </style>

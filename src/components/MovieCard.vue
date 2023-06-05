@@ -1,5 +1,5 @@
 <template>
-  <div v-if="upcoming.now != undefined" class="poster" :style="{'background-image': 'url('+upcoming.now.production.images.OpenGraph.filename+')'}">
+  <div v-if="upcoming.now" class="poster" :style="{'background-image': 'url('+upcoming.now.production.images.OpenGraph.filename+')'}">
     <div class="card">
       <div class="contents">
         <h1>{{upcoming.now.production.title}}</h1>
@@ -16,38 +16,22 @@
 <script lang="ts" setup>
 
 import CountDown from "./CountDown.vue";
-import {NatLabEvent} from "../Api";
+import {getCurrentMoviePlayed, NatLabEvent} from "../Api";
 import moment from "moment";
 import {onMounted, ref, watch} from "vue";
 const props = defineProps<{
   events: NatLabEvent[]
 }>()
-const upcoming = ref<{now: NatLabEvent|undefined, next: NatLabEvent|undefined}>({now: undefined, next: undefined})
-onMounted(() => {
-  upcoming.value=getCurrentMoviePlayed()
-  console.log(upcoming.value)
-})
+const upcoming = ref<{now: NatLabEvent|undefined, next: NatLabEvent|undefined}>()
 
 watch(() => {
-  upcoming.value=getCurrentMoviePlayed()
+  upcoming.value= getCurrentMoviePlayed(props.events)
 })
 
 const x = setInterval(function () {
-  upcoming.value=getCurrentMoviePlayed()
+  upcoming.value=getCurrentMoviePlayed(props.events)
   clearInterval(x);
 }, 1000)
-
-function getCurrentMoviePlayed(): {now: NatLabEvent|undefined, next: NatLabEvent|undefined}{
-  const events = props.events.filter(e =>{
-    const startDate = moment(e.startDate)
-    startDate.add(e.production.movie.runningTime, "m")
-    return startDate > moment() && startDate.format('DD-MM-yyyy') === moment().format('DD-MM-yyyy')
-  })
-  return {
-    now: events.at(0),
-    next: events.at(1)
-  }
-}
 </script>
 
 <style scoped>

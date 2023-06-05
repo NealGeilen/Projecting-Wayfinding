@@ -1,4 +1,5 @@
 import {ref} from "vue";
+import moment from "moment/moment";
 
 export interface NatLab {
     events: NatLabEvent[];
@@ -170,4 +171,17 @@ export function request():Promise<Error | NatLab>{
         .then(response => response.json())
         .then(result => {return result as NatLab})
         .catch(error => {return error as Error});
+}
+
+
+export function getCurrentMoviePlayed(events: NatLabEvent[]): {now: NatLabEvent|undefined, next: NatLabEvent|undefined}{
+    const filterEvents = events.filter(e =>{
+        const startDate = moment(e.startDate)
+        startDate.add(e.production.movie.runningTime, "m")
+        return startDate > moment() && startDate.format('DD-MM-yyyy') === moment().format('DD-MM-yyyy')
+    })
+    return {
+        now: filterEvents.at(0),
+        next: filterEvents.at(1)
+    }
 }

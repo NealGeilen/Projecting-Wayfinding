@@ -25,7 +25,7 @@ const x = setInterval(function () {
     if (document.getElementById(props.id) !== null){
         // Display the result in the element with id="demo"
         document.getElementById(props.id).innerHTML = (hours > 0 ? hours + "h " : '')
-            + (minutes > 0 ? minutes + "m ": '') + seconds + "s ";
+            + (minutes > 0 ? minutes + "m ": '');
 
         // If the count down is finished, write some text
         if (distance < 0) {
