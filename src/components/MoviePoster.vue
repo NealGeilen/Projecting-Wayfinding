@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {getCurrentMoviePlayed, NatLabEvent} from "../Api";
-import {ref, watch} from "vue";
+import {ref, watch, watchEffect} from "vue";
 import moment from "moment";
 
 const props = defineProps<{
@@ -8,7 +8,7 @@ const props = defineProps<{
 }>()
 const upcoming = ref<{now: NatLabEvent|undefined, next: NatLabEvent|undefined}>()
 
-watch(() => {
+watchEffect(() => {
   upcoming.value= getCurrentMoviePlayed(props.events)
 })
 
