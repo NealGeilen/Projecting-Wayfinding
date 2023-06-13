@@ -4,10 +4,10 @@
       <div class="contents">
         <h1>{{upcoming.now.production.title}}</h1>
         <h3>{{upcoming.now.hall}}</h3>
-        <CountDown :id="upcoming.now.boxofficeId" :start-time="new Date(upcoming.now.startDate as string)"></CountDown>
+        <CountDown :id="upcoming.now.boxofficeId" :start-time="new Date(upcoming.now.startDate as unknown as string)"></CountDown>
       </div>
       <div v-if="upcoming.next != undefined" class="next">
-        <h3>Next: <br/> {{upcoming.next.production.title}} {{moment(upcoming.next.startDate as string).format('HH:mm')}}</h3>
+        <h3>Next: <br/> {{upcoming.next.production.title}} {{moment(upcoming.next.startDate as unknown as string).format('HH:mm')}}</h3>
       </div>
     </div>
   </div>
