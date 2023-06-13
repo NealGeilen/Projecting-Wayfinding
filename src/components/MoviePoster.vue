@@ -6,7 +6,7 @@ import moment from "moment";
 const props = defineProps<{
   events: NatLabEvent[]
 }>()
-const upcoming = ref<{now: NatLabEvent|undefined, next: NatLabEvent|undefined}>()
+const upcoming = ref<{now: NatLabEvent, next: NatLabEvent}>()
 
 watchEffect(() => {
   upcoming.value= getCurrentMoviePlayed(props.events)
@@ -19,7 +19,7 @@ const x = setInterval(function () {
 </script>
 
 <template>
-  <div v-if="upcoming.now != undefined" class="moviePoster">
+  <div v-if="upcoming" class="moviePoster">
     <div class="poster" :style="{'background-image': 'url('+upcoming.now.production.images.HDPortrait.filename+')'}">
       <h2 class="count">{{upcoming.now.production.title}} {{moment(upcoming.now.startDate).format('HH:mm')}}</h2>
     </div>
