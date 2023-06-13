@@ -174,14 +174,14 @@ export function request():Promise<Error | NatLab>{
 }
 
 
-export function getCurrentMoviePlayed(events: NatLabEvent[]): {now: NatLabEvent|undefined, next: NatLabEvent|undefined}{
+export function getCurrentMoviePlayed(events: NatLabEvent[]): {now: NatLabEvent, next: NatLabEvent}{
     const filterEvents = events.filter(e =>{
         const startDate = moment(e.startDate)
         startDate.add(e.production.movie.runningTime, "m")
         return startDate > moment() && startDate.format('DD-MM-yyyy') === moment().format('DD-MM-yyyy')
     })
     return {
-        now: filterEvents.at(0),
-        next: filterEvents.at(1)
+        now: filterEvents.at(0) as NatLabEvent,
+        next: filterEvents.at(1) as NatLabEvent
     }
 }

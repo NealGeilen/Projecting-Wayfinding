@@ -1,5 +1,5 @@
 <template>
-  <div v-if="upcoming.now != undefined" class="poster" :style="{'background-image': 'url('+upcoming.now.production.images.OpenGraph.filename+')'}">
+  <div v-if="upcoming" class="poster" :style="{'background-image': 'url('+upcoming.now.production.images.OpenGraph.filename+')'}">
     <div class="card">
       <div class="contents">
         <h1>{{upcoming.now.production.title}}</h1>
@@ -22,7 +22,7 @@ import {onMounted, ref, watch, watchEffect} from "vue";
 const props = defineProps<{
   events: NatLabEvent[]
 }>()
-const upcoming = ref<{now: NatLabEvent|undefined, next: NatLabEvent|undefined}>()
+const upcoming = ref<{now: NatLabEvent, next: NatLabEvent}>()
 
 watchEffect(() => {
   upcoming.value= getCurrentMoviePlayed(props.events)
