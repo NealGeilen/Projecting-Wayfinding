@@ -21,16 +21,17 @@ const x = setInterval(function () {
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    var div = document.getElementById(props.id)
 
-    if (document.getElementById(props.id) !== null){
+    if (div !== null){
         // Display the result in the element with id="demo"
-        document.getElementById(props.id).innerHTML = (hours > 0 ? hours + "h " : '')
+        div.innerHTML = (hours > 0 ? hours + "h " : '')
             + (minutes > 0 ? minutes + "m ": '');
 
         // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(x);
-            document.getElementById(props.id).innerHTML = "Nu spelend";
+            div.innerHTML = "Nu spelend";
         }
     }
 

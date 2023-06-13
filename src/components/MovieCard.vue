@@ -7,7 +7,7 @@
         <CountDown :id="upcoming.now.boxofficeId" :start-time="new Date(upcoming.now.startDate as string)"></CountDown>
       </div>
       <div v-if="upcoming.next != undefined" class="next">
-        <h3>Next: <br/> {{upcoming.next.production.title}} {{moment(upcoming.next.startDate).format('HH:mm')}}</h3>
+        <h3>Next: <br/> {{upcoming.next.production.title}} {{moment(upcoming.next.startDate as string).format('HH:mm')}}</h3>
       </div>
     </div>
   </div>
