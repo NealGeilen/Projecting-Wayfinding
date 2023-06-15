@@ -9,6 +9,8 @@
       <div v-if="upcoming.next != undefined" class="next">
         <h3>Next: <br/> {{upcoming.next.production.title}} {{moment(upcoming.next.startDate as unknown as string).format('HH:mm')}}</h3>
       </div>
+      <div v-if="l" class="arrow"></div>
+      <div v-else class="arrowR"></div>
     </div>
   </div>
 </template>
@@ -20,7 +22,8 @@ import {getCurrentMoviePlayed, NatLabEvent} from "../Api";
 import moment from "moment";
 import {onMounted, ref, watch, watchEffect} from "vue";
 const props = defineProps<{
-  events: NatLabEvent[]
+  events: NatLabEvent[],
+  l: true
 }>()
 const upcoming = ref<{now: NatLabEvent, next: NatLabEvent}>()
 
@@ -40,6 +43,22 @@ const x = setInterval(function () {
   width: 100%;
   position: absolute;
   background-size: contain;
+}
+.arrow{
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 15px;
+  height: 100px;
+  width: 50%;
+  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+}
+.arrowR{
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 15px;
+  height: 100px;
+  width: 50%;
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 .card{
   color: #ffffff;

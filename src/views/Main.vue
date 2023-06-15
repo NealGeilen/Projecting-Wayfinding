@@ -9,7 +9,20 @@ request().then(r => {
 </script>
 
 <template>
-<img class="map" src="../assets/F1.png">
+  <div class="container" id="l2">
+    <div class="lvl">1</div>
+    <img class="map" src="../assets/F2.png">
+    <div class="square" id="Room6">
+      <MoviePoster :events="response.events.filter(e => e.hall === Hall.Podiumzaal)"></MoviePoster>
+    </div>
+    <div class="square" id="Room5">
+      <MoviePoster :events="response.events.filter(e => e.hall === Hall.Auditorium)"></MoviePoster>
+    </div>
+  </div>
+
+<div class="container" id="l1">
+  <div class="lvl">0</div>
+  <img class="map" src="../assets/F1.png">
   <div class="square" id="Room4">
     <MoviePoster :events="response.events.filter(e => e.hall === Hall.Zaal4)"></MoviePoster>
   </div>
@@ -22,13 +35,18 @@ request().then(r => {
   <div class="square" id="Room1">
     <MoviePoster :events="response.events.filter(e => e.hall === Hall.Zaal1)"></MoviePoster>
   </div>
+</div>
 </template>
 
 <style scoped>
+.container{
+  height: 1280px;
+  width: 1920px;
+  position: absolute;
+}
 .map{
   max-height: 100%;
   max-width: 100%;
-  position: relative;
 }
 .square{
   position: absolute;
@@ -38,20 +56,42 @@ request().then(r => {
   max-height: 100%;
   border-radius: 1px;
 }
+#Room6{
+  top: 32%;
+  left: 25%;
+}
+#Room5{
+  top: 25%;
+  left: 65%;
+}
 #Room4{
-  top: 325px;
-  left: 425px;
+  top: 32%;
+  left: 25%;
 }
 #Room3{
-  top: 250px;
-  left: 675px;
+  top: 25%;
+  left: 36%;
 }
 #Room2{
-  top: 75px;
-  left: 1050px;
+  top: 13%;
+  left: 58%;
 }
 #Room1{
-  top: 10px;
-  left: 1300px;
+  top: 7%;
+  left: 70%;
+}
+#l1{
+  top: 30%;
+  left: 15%;
+}
+.lvl{
+  padding: 10px;
+  background-color: white;
+  color: black;
+  width: 40px;
+  text-align: center;
+  position: absolute;
+  bottom: 40%;
+  font-size: large;
 }
 </style>

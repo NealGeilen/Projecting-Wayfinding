@@ -26,19 +26,19 @@ request().then(r => {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: black;
 }
 
 .poster1{
   background: center left no-repeat fixed;
-  clip-path: polygon(0 0, 55% 0, 36% 100%, 0% 100%);
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
   background-size: contain;
 }
 .poster2{
   background: no-repeat center left fixed;
   background-size: contain;
-  clip-path: polygon(100% 0, 55% 0, 36% 100%, 100% 100%);
+  clip-path: polygon(100% 0, 50% 0, 50% 100%, 100% 100%);
 }
+
 .poster1 .card{
   left: 15%;
 }
