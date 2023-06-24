@@ -23,7 +23,7 @@ import moment from "moment";
 import {onMounted, ref, watch, watchEffect} from "vue";
 const props = defineProps<{
   events: NatLabEvent[],
-  l: true
+  l: boolean
 }>()
 const upcoming = ref<{now: NatLabEvent, next: NatLabEvent}>()
 

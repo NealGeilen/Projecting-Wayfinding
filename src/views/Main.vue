@@ -23,6 +23,7 @@ request().then(r => {
 <div class="container" id="l1">
   <div class="lvl">0</div>
   <img class="map" src="../assets/F1.png">
+  <img class="pin" src="../assets/Map-Pin.svg">
   <div class="square" id="Room4">
     <MoviePoster :events="response.events.filter(e => e.hall === Hall.Zaal4)"></MoviePoster>
   </div>
@@ -50,11 +51,8 @@ request().then(r => {
 }
 .square{
   position: absolute;
-}
-.square img{
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 1px;
+  height: 250px;
+  width: 150px;
 }
 #Room6{
   top: 32%;
@@ -80,9 +78,11 @@ request().then(r => {
   top: 7%;
   left: 70%;
 }
+#l1, #l2{
+  max-width: 100%;
+}
 #l1{
   top: 30%;
-  left: 15%;
 }
 .lvl{
   padding: 10px;
@@ -93,5 +93,11 @@ request().then(r => {
   position: absolute;
   bottom: 40%;
   font-size: large;
+}
+.pin{
+  position: absolute;
+  bottom: 58%;
+  left: 58%;
+  height: 60px;
 }
 </style>
