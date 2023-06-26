@@ -14,8 +14,8 @@ request().then(r => {
 <template>
   <div class="container" v-if="response != undefined">
     <div class="overlay"></div>
-    <MovieCard class="poster1" :events="response.events.filter(e => e.hall === Hall.Zaal2)"></MovieCard>
-    <MovieCard class="poster2" :events="response.events.filter(e => e.hall === Hall.Zaal1)"></MovieCard>
+    <MovieCard class="poster1" :events="response.events.filter(e => e.hall === Hall.Zaal2)" :l="false"></MovieCard>
+    <MovieCard class="poster2" :events="response.events.filter(e => e.hall === Hall.Zaal1)" :l="false"></MovieCard>
   </div>
 </template>
 
