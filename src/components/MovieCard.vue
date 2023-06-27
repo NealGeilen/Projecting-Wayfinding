@@ -2,7 +2,7 @@
   <div v-if="upcoming" :style="{'background-image': 'url('+upcoming.now.production.images.OpenGraph.filename+')'}"
        class="poster">
     {{ upcoming.now.production.video1}}
-    <iframe width="1280" height="720" :src="upcoming.now.production.video1" :title="upcoming.now.production.title" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="1280" height="720" :src="upcoming.now.production.video1  as unknown as string" :title="upcoming.now.production.title  as unknown as string" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <div class="card">
       <div class="contents">
         <h1>{{ upcoming.now.production.title }}</h1>
