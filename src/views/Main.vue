@@ -79,7 +79,7 @@ request().then(r => {
   left: 70%;
 }
 #l1, #l2{
-  max-width: 100%;
+  //max-width: 100%;
 }
 #l1{
   top: 30%;
@@ -91,7 +91,8 @@ request().then(r => {
   width: 40px;
   text-align: center;
   position: absolute;
-  bottom: 40%;
+  bottom: 33%;
+  left: 20%;
   font-size: large;
 }
 .pin{

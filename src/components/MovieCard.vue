@@ -46,16 +46,14 @@ const x = setInterval(function () {
 }
 .arrow{
   background-color: white;
-  margin: 0 auto;
-  margin-top: 15px;
+  margin: 15px auto 0;
   height: 100px;
   width: 50%;
   clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 .arrowR{
   background-color: white;
-  margin: 0 auto;
-  margin-top: 15px;
+  margin: 15px auto 0;
   height: 100px;
   width: 50%;
   clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
@@ -65,8 +63,7 @@ const x = setInterval(function () {
   top: 25%;
   position: absolute;
   text-align: center;
-  min-width: 25%;
-  max-width: 30%;
+  width: 30%;
 }
 .card .contents{
   padding: 10px 15px;
