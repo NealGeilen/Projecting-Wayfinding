@@ -21,11 +21,19 @@ const x = setInterval(function () {
 <template>
   <div v-if="upcoming" class="moviePoster">
     <div class="poster" :style="{'background-image': 'url('+upcoming.now.production.images.HDPortrait.filename+')'}">
-      <h2 class="count">
-        {{upcoming.now.production.title}}
-        <br/>
-        {{moment(upcoming.now.startDate).format('HH:mm')}}
-      </h2>
+      <div class="overlay">
+        <h2 class="count">
+          {{upcoming.now.production.title}}
+
+        </h2>
+        <p>
+          {{moment(upcoming.now.startDate).format('HH:mm')}}
+          <br/>
+          {{upcoming.now.hall}}
+        </p>
+      </div>
+
+
     </div>
 
   </div>
@@ -45,15 +53,30 @@ const x = setInterval(function () {
   position: relative;
   border-radius: 4px;
 }
-.poster .count{
-  text-align: center;
+.poster p{
   color: white;
-  background-color: rgba(0,0,0,.6);
-  padding: 4px;
-  margin: unset;
+  font-size: 21px;
+  top: 65%;
   position: absolute;
-  top: 25%;
   left: 0;
   right: 0;
+}
+.poster .count{
+  top: 30%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  padding: 4px;
+  margin: unset;
+}
+.poster .overlay{
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 </style>

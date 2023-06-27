@@ -60,7 +60,7 @@ request().then(r => {
 }
 #Room5{
   top: 25%;
-  left: 65%;
+  left: 61%;
 }
 #Room4{
   top: 32%;
@@ -82,18 +82,17 @@ request().then(r => {
   //max-width: 100%;
 }
 #l1{
-  top: 30%;
+  top: 35%;
 }
 .lvl{
-  padding: 10px;
+  padding: 10px 22px;
   background-color: white;
   color: black;
-  width: 40px;
   text-align: center;
   position: absolute;
   bottom: 33%;
   left: 20%;
-  font-size: large;
+  font-size: 48px;
 }
 .pin{
   position: absolute;
