@@ -1,8 +1,7 @@
 <template>
-  <div v-if="upcoming" :style="{'background-image': 'url('+upcoming.now.production.images.OpenGraph.filename+')'}"
-       class="poster">
-    {{ upcoming.now.production.video1}}
-    <iframe width="1280" height="720" :src="upcoming.now.production.video1  as unknown as string" :title="upcoming.now.production.title  as unknown as string" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <div v-if="upcoming" class="poster">
+    <iframe class="trailer" allow='autoplay' :src="'https://www.youtube.com/embed/' + videoId+'?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1&playlist=' + videoId   as unknown as string" :title="upcoming.now.production.title  as unknown as string"></iframe>
+    <div class="overlay"></div>
     <div class="card">
       <div class="contents">
         <h1>{{ upcoming.now.production.title }}</h1>
@@ -32,13 +31,16 @@ const props = defineProps<{
   l: boolean
 }>()
 const upcoming = ref<{ now: NatLabEvent, next: NatLabEvent }>()
+const videoId = ref<string>()
 
 watchEffect(() => {
   upcoming.value = getCurrentMoviePlayed(props.events)
+  videoId.value = upcoming.value.now.production.video1?.slice(upcoming.value.now.production.video1?.lastIndexOf('/')+1)
 })
 
 const x = setInterval(function () {
   upcoming.value = getCurrentMoviePlayed(props.events)
+  videoId.value = upcoming.value.now.production.video1?.slice(upcoming.value.now.production.video1?.lastIndexOf('/')+1)
   clearInterval(x);
 }, 1000)
 </script>
@@ -46,9 +48,28 @@ const x = setInterval(function () {
 <style scoped>
 .poster {
   height: 100%;
-  width: 100%;
+  width: 50%;
+  overflow: hidden;
+}
+
+iframe {
+  display: block;
   position: absolute;
-  background-size: contain;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vw;
+  overflow: hidden;
+}
+
+.overlay{
+  background-color: rgba(0,0,0,.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .arrow {
@@ -72,12 +93,13 @@ const x = setInterval(function () {
   top: 25%;
   position: absolute;
   text-align: center;
-  width: 30%;
+  right: 30%;
+  width: 40%;
 }
 
 .card .contents {
   padding: 10px 15px;
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .card .next {

@@ -71,7 +71,7 @@ const x = setInterval(function () {
   padding: 4px;
   margin: unset;
 }
-.poster .overlay{
+.overlay{
   background-color: rgba(0,0,0,.5);
   position: absolute;
   top: 0;

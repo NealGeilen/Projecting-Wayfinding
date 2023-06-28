@@ -28,23 +28,4 @@ request().then(r => {
   left: 0;
 }
 
-.poster1{
-  background: center left no-repeat fixed;
-  clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
-  background-size: contain;
-}
-.poster2{
-  background: no-repeat center left fixed;
-  background-size: contain;
-  clip-path: polygon(100% 0, 50% 0, 50% 100%, 100% 100%);
-}
-
-.poster1 .card{
-  left: 15%;
-}
-
-.poster2 .card{
-  right: 15%;
-}
-
 </style>

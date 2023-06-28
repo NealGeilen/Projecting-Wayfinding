@@ -14,8 +14,8 @@ request().then(r => {
 <template>
   <div class="container" v-if="response != undefined">
     <div class="overlay"></div>
-    <MovieCard class="poster1" :events="response.events.filter(e => e.hall === Hall.Zaal2)" :l="false"></MovieCard>
-    <MovieCard class="poster2" :events="response.events.filter(e => e.hall === Hall.Zaal1)" :l="false"></MovieCard>
+    <MovieCard class="poster" :events="response.events.filter(e => e.hall === Hall.Zaal2)" :l="false"></MovieCard>
+    <MovieCard class="poster" :events="response.events.filter(e => e.hall === Hall.Zaal1)" :l="false"></MovieCard>
   </div>
 </template>
 
@@ -26,24 +26,7 @@ request().then(r => {
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.poster1{
-  background: center left no-repeat fixed;
-  clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
-  background-size: contain;
-}
-.poster2{
-  background: no-repeat center left fixed;
-  clip-path: polygon(100% 0, 50% 0, 50% 100%, 0% 100%);
-  background-size: contain;
-}
-.poster1 .card{
-  left: 15%;
-}
-
-.poster2 .card{
-  right: 15%;
+  display: inline-flex;
 }
 
 </style>
