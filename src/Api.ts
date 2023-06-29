@@ -160,7 +160,7 @@ export function request():Promise<Error | NatLab>{
     const today = new Date()
     formdata.append("startDate", today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear());
 
-    return fetch("https://www.natlab.nl/nl/feed/events", {
+    return fetch("/data.json", {
         method: 'POST',
         headers: new Headers({
             "apiKey" : "02a2eb195cb8b6f4df3b05c466440fb22f3c54922890"
